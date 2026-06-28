@@ -10,12 +10,13 @@
     <link rel="apple-touch-icon" href="../store/strawberryicon.png" />
 
     <!-- ===== OPEN GRAPH ===== -->
-    <meta property="og:title" content="Strawberry Asset Hub — Unavailable in USD" />
-    <meta property="og:description" content="This asset is not available in USD. Try INR or join Discord for updates." />
+    <meta property="og:title" content="Strawberry Asset Hub — Explore All Assets" />
+    <meta property="og:description" content="Game-ready assets with dual pricing – INR & USD." />
     <meta property="og:image" content="https://yourdomain.com/images/store/og-banner.jpg" />
-    <meta property="og:url" content="https://masteraatib.github.io/strawberry-Asset-Hub-/sorry.html" />
+    <meta property="og:url" content="https://masteraatib.github.io/strawberry-Asset-Hub-/explore.html" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Strawberry Asset Hub" />
+
     <style>
         /* ─── RESET & BASE ─── */
         * {
@@ -560,7 +561,7 @@
         <!-- NAV -->
         <nav>
             <a href="../index.html">Home</a>
-            <a href="explore.html" class="active">Explore All </a>
+            <a href="explore.html" class="active">Explore All</a>
             <a href="https://www.pixelcut.ai/background-remover" target="_blank">BG Remove</a>
             <a href="https://picsart.com/image-upscale/" target="_blank">Upscale</a>
             <a href="https://gemini.google.com/app" target="_blank">AI Artist</a>
@@ -620,7 +621,7 @@
             type: "free",
             priceUSD: 0,
             priceINR: 0,
-            link: "sorry.html",
+            link: "sorry.html",                // single link for free assets
             tag: "🔥 Popular"
         }, {
             id: 2,
@@ -630,7 +631,8 @@
             type: "paid",
             priceUSD: 12.99,
             priceINR: 499,
-            link: "https://your-superprofile-link",
+            linkINR: "https://your-superprofile-link.com/product/fantasy-weapon",   // INR link
+            linkUSD: "https://ko-fi.com/s/weapon-set-123",                         // USD link
             tag: "✨ Premium"
         }, {
             id: 3,
@@ -640,7 +642,8 @@
             type: "paid",
             priceUSD: 8.50,
             priceINR: 349,
-            link: "https://your-superprofile-link",
+            linkINR: "https://your-superprofile-link.com/product/forest-bg",
+            linkUSD: "https://ko-fi.com/s/forest-bg-456",
             tag: "🆕 New"
         }, {
             id: 4,
@@ -650,7 +653,7 @@
             type: "free",
             priceUSD: 0,
             priceINR: 0,
-            link: "https://your-superprofile-link",
+            link: "https://your-superprofile-link.com/castle-icons",
             tag: "🎁 Free"
         }, {
             id: 5,
@@ -660,7 +663,8 @@
             type: "paid",
             priceUSD: 18.99,
             priceINR: 749,
-            link: "https://your-superprofile-link",
+            linkINR: "https://your-superprofile-link.com/product/dragon-slayer",
+            linkUSD: "https://ko-fi.com/s/dragon-slider-789",
             tag: "🏆 Top Rated"
         }, {
             id: 6,
@@ -670,7 +674,8 @@
             type: "paid",
             priceUSD: 9.99,
             priceINR: 399,
-            link: "https://your-superprofile-link",
+            linkINR: "https://your-superprofile-link.com/product/mythic-blades",
+            linkUSD: "https://ko-fi.com/s/mythic-blades-101",
             tag: "⚡ Limited"
         }, {
             id: 7,
@@ -680,7 +685,7 @@
             type: "free",
             priceUSD: 0,
             priceINR: 0,
-            link: "https://your-superprofile-link",
+            link: "https://your-superprofile-link.com/pixel-dungeon",
             tag: "🌱 Community"
         }, {
             id: 8,
@@ -690,7 +695,8 @@
             type: "paid",
             priceUSD: 14.50,
             priceINR: 599,
-            link: "https://your-superprofile-link",
+            linkINR: "https://your-superprofile-link.com/product/cyberpunk-ui",
+            linkUSD: "https://ko-fi.com/s/cyber-ui-202",
             tag: "💎 Pro"
         }, {
             id: 9,
@@ -700,7 +706,7 @@
             type: "free",
             priceUSD: 0,
             priceINR: 0,
-            link: "https://your-superprofile-link",
+            link: "https://your-superprofile-link.com/retro-sfx",
             tag: "🎵 Free"
         }, {
             id: 10,
@@ -710,7 +716,8 @@
             type: "paid",
             priceUSD: 22.99,
             priceINR: 899,
-            link: "https://your-superprofile-link",
+            linkINR: "https://your-superprofile-link.com/product/low-poly-char",
+            linkUSD: "https://ko-fi.com/s/low-poly-303",
             tag: "🧊 New"
         }, {
             id: 11,
@@ -720,17 +727,18 @@
             type: "free",
             priceUSD: 0,
             priceINR: 0,
-            link: "https://your-superprofile-link",
+            link: "https://your-superprofile-link.com/magic-spells",
             tag: "✨ Free"
         }, {
             id: 12,
             name: "Steampunk Environment",
             category: "2D Background",
-            thumbnail: "../images/store/hollow_knight.jpg",
+            thumbnail: "../store/hollow_knight.jpg",
             type: "paid",
             priceUSD: 11.99,
             priceINR: 479,
-            link: "https://your-superprofile-link",
+            linkINR: "https://your-superprofile-link.com/product/steampunk-env",
+            linkUSD: "https://ko-fi.com/s/steampunk-404",
             tag: "🏭 Steam"
         }, {
             id: 13,
@@ -740,7 +748,7 @@
             type: "free",
             priceUSD: 0,
             priceINR: 0,
-            link: "https://your-superprofile-link",
+            link: "https://your-superprofile-link.com/sword-shield",
             tag: "⚔️ Free"
         }, {
             id: 14,
@@ -750,7 +758,8 @@
             type: "paid",
             priceUSD: 6.99,
             priceINR: 279,
-            link: "https://your-superprofile-link",
+            linkINR: "https://your-superprofile-link.com/product/boss-music",
+            linkUSD: "https://ko-fi.com/s/boss-music-505",
             tag: "🎶 Epic"
         }, {
             id: 15,
@@ -760,7 +769,8 @@
             type: "paid",
             priceUSD: 7.50,
             priceINR: 299,
-            link: "https://your-superprofile-link",
+            linkINR: "https://your-superprofile-link.com/product/minimal-ui",
+            linkUSD: "https://ko-fi.com/s/minimal-ui-606",
             tag: "📱 Clean"
         }, {
             id: 16,
@@ -770,7 +780,8 @@
             type: "paid",
             priceUSD: 15.99,
             priceINR: 649,
-            link: "https://your-superprofile-link",
+            linkINR: "https://your-superprofile-link.com/product/scifi-weapons",
+            linkUSD: "https://ko-fi.com/s/scifi-weapons-707",
             tag: "🚀 Futuristic"
         }];
 
@@ -820,10 +831,8 @@
                     list.sort((a, b) => b.priceUSD - a.priceUSD);
                     break;
                 default:
-                    // default: keep original order (by id)
                     break;
             }
-
             return list;
         }
 
@@ -854,13 +863,17 @@
 
                 let actionsHTML = "";
                 if (isFree) {
+                    // Free asset: single View button
                     actionsHTML = `
-                        <a href="${asset.link}" target="_blank" class="btn btn-view">👁️ View Asset</a>
+                        <a href="${asset.link || '#'}" target="_blank" class="btn btn-view">👁️ View Asset</a>
                     `;
                 } else {
+                    // Paid asset: two buttons with different links
+                    const inrLink = asset.linkINR || '#';
+                    const usdLink = asset.linkUSD || '#';
                     actionsHTML = `
-                        <a href="${asset.link}" target="_blank" class="btn btn-buy-inr paid">₹ ${asset.priceINR}</a>
-                        <a href="${asset.link}" target="_blank" class="btn btn-buy-usd paid">$ ${asset.priceUSD.toFixed(2)}</a>
+                        <a href="${inrLink}" target="_blank" class="btn btn-buy-inr paid">₹ ${asset.priceINR}</a>
+                        <a href="${usdLink}" target="_blank" class="btn btn-buy-usd paid">$ ${asset.priceUSD.toFixed(2)}</a>
                     `;
                 }
 
@@ -894,7 +907,6 @@
         //  FILTER + SEARCH + SORT HANDLERS
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-        // Category filter buttons
         document.querySelectorAll(".filter-btn").forEach(btn => {
             btn.addEventListener("click", function() {
                 document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
@@ -904,7 +916,6 @@
             });
         });
 
-        // Search
         function searchAssets() {
             currentSearch = searchInput.value;
             updateUI();
@@ -917,7 +928,6 @@
             }
         });
 
-        // Sort
         sortSelect.addEventListener("change", updateUI);
 
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -925,8 +935,6 @@
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
         updateUI();
-
-        // Expose for inline onclick
         window.searchAssets = searchAssets;
     </script>
 
