@@ -1,35 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-
-    <!-- ===== FAVICON ===== -->
-    <link rel="icon" href="store/strawberryicon.png" type="image/png" />
-    <link rel="shortcut icon" href="store/strawberryicon.png" type="image/png" />
-    <link rel="apple-touch-icon" href="store/strawberryicon.png" />
-
-    <!-- ===== OPEN GRAPH (OG) TAGS ===== -->
-    <meta property="og:title" content="Strawberry Asset Hub — Game Assets for Developers" />
-    <meta property="og:description" content="High-quality game-ready assets: 2D animations, weapons, backgrounds, icons & more. Free & paid options with affordable pricing." />
-    <meta property="og:image" content="store/store_banner.png" />
-    <!-- ^ replace with your actual OG image URL -->
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:url" content="https://masteraatib.github.io/strawberry-Asset-Hub/explore.html" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Strawberry Asset Hub" />
-
-    <!-- ===== TWITTER CARD ===== -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Strawberry Asset Hub — Game Assets for Developers" />
-    <meta name="twitter:description" content="High-quality game-ready assets: 2D animations, weapons, backgrounds, icons & more." />
-    <meta name="twitter:image" content="store/store_banner.png" />
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Strawberry Asset Hub</title>
-
     <style>
-        /* ─── RESET & BASE (unchanged) ─── */
         * {
             margin: 0;
             padding: 0;
@@ -41,7 +16,7 @@
             background: #0d1117;
             color: white;
             height: 100vh;
-            overflow: hidden;
+            overflow: hidden;   /* prevents browser scroll, using internal scroll */
         }
 
         .main-scroll {
@@ -51,6 +26,7 @@
             scroll-behavior: smooth;
         }
 
+        /* custom scrollbar */
         .main-scroll::-webkit-scrollbar {
             width: 8px;
         }
@@ -62,7 +38,7 @@
             background: #161b22;
         }
 
-        /* ─── HEADER ─── */
+        /* HEADER */
         header {
             background: #111827;
             padding: 15px 5%;
@@ -81,11 +57,13 @@
             gap: 5px;
             flex-wrap: wrap;
         }
+
         .logo span {
             color: #ff2e55;
             font-size: 36px;
             font-weight: bold;
         }
+
         .logo-icon {
             height: 62px;
             width: auto;
@@ -97,6 +75,7 @@
             width: 380px;
             max-width: 100%;
         }
+
         .search-box input {
             flex: 1;
             padding: 12px 15px;
@@ -107,6 +86,7 @@
             border-radius: 8px 0 0 8px;
             font-size: 16px;
         }
+
         .search-box button {
             padding: 12px 20px;
             border: none;
@@ -117,11 +97,12 @@
             border-radius: 0 8px 8px 0;
             transition: background 0.2s;
         }
+
         .search-box button:hover {
             background: #e0294c;
         }
 
-        /* ─── NAV ─── */
+        /* NAV */
         nav {
             background: #161b22;
             padding: 12px 5%;
@@ -131,6 +112,7 @@
             white-space: nowrap;
             scrollbar-width: thin;
         }
+
         nav a {
             text-decoration: none;
             color: white;
@@ -139,16 +121,17 @@
             border-bottom: 2px solid transparent;
             transition: 0.2s;
         }
+
         nav a:hover {
             color: #ff2e55;
             border-bottom-color: #ff2e55;
         }
 
-        /* ─── HERO BANNER ─── */
+        /* HERO BANNER */
         .hero-banner {
             margin: 30px 5%;
             border-radius: 24px;
-            background: linear-gradient(90deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.0)), url("store/hollow_knight.webp");
+            background: linear-gradient(90deg, rgba(0,0,0,0.95), rgba(0,0,0,0.0)), url("../images/store/hollow_knight.webp");
             background-size: cover;
             background-position: center 30%;
             display: flex;
@@ -159,9 +142,7 @@
         }
 
         @keyframes floatHero {
-            50% {
-                transform: translateY(-5px);
-            }
+            50% { transform: translateY(-5px); }
         }
 
         .hero-content {
@@ -189,7 +170,6 @@
             line-height: 1.4;
         }
 
-        /* ===== ✨ GLOW BUTTON — RGB + pulse on hover ===== */
         .hero-btn {
             display: inline-block;
             padding: 14px 32px;
@@ -198,82 +178,15 @@
             text-decoration: none;
             border-radius: 40px;
             font-weight: bold;
-            transition: transform 0.2s, box-shadow 0.3s, background 0.3s;
-            position: relative;
-            z-index: 1;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 0 12px rgba(255, 46, 85, 0.4);
-        }
-
-        /* RGB glow ring on hover — animated rainbow border */
-        .hero-btn::before {
-            content: '';
-            position: absolute;
-            inset: -3px;
-            border-radius: 44px;
-            background: conic-gradient(from 0deg,
-                    #ff2e55, #ff6b35, #f7c948, #4ecdc4, #6c5ce7, #ff2e55);
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            animation: rgbSpin 3s linear infinite;
-            filter: blur(2px);
-        }
-
-        .hero-btn:hover::before {
-            opacity: 1;
-        }
-
-        .hero-btn::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 40px;
-            background: #ff2e55;
-            z-index: -1;
-            transition: background 0.3s;
-        }
-
-        .hero-btn:hover::after {
-            background: #e0294c;
-        }
-
-        /* pulse glow on hover (extra pop) */
-        .hero-btn:hover {
-            transform: scale(1.05);
-            box-shadow:
-                0 0 20px rgba(255, 46, 85, 0.6),
-                0 0 60px rgba(255, 46, 85, 0.3),
-                0 0 100px rgba(255, 46, 85, 0.15);
-            animation: pulseGlow 1.2s ease-in-out infinite;
-        }
-
-        @keyframes rgbSpin {
-            0% {
-                filter: hue-rotate(0deg) blur(3px);
-            }
-            100% {
-                filter: hue-rotate(360deg) blur(3px);
-            }
-        }
-
-        @keyframes pulseGlow {
-            0%,
-            100% {
-                box-shadow: 0 0 20px rgba(255, 46, 85, 0.6), 0 0 60px rgba(255, 46, 85, 0.3), 0 0 100px rgba(255, 46, 85, 0.15);
-            }
-            50% {
-                box-shadow: 0 0 30px rgba(255, 46, 85, 0.9), 0 0 80px rgba(255, 46, 85, 0.5), 0 0 140px rgba(255, 46, 85, 0.25);
-            }
+            transition: background 0.2s, transform 0.1s;
         }
 
         .hero-btn:hover {
             background: #e0294c;
-            transform: scale(1.05);
+            transform: scale(1.02);
         }
 
-        /* ─── FILTER BAR ─── */
+        /* FILTER BAR */
         .filter-bar {
             padding: 10px 5% 20px;
             display: flex;
@@ -291,12 +204,13 @@
             font-weight: 500;
             transition: all 0.2s;
         }
+
         .filter-btn:hover {
             background: #ff2e55;
             border-color: #ff2e55;
         }
 
-        /* ─── SECTION TITLE ─── */
+        /* SECTION TITLE */
         .section-title {
             padding: 0 5% 20px;
             font-size: 32px;
@@ -304,7 +218,7 @@
             letter-spacing: -0.5px;
         }
 
-        /* ─── PRODUCT GRID ─── */
+        /* PRODUCT GRID */
         .products {
             padding: 0 5% 50px;
             display: grid;
@@ -325,7 +239,7 @@
 
         .card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.3);
             border-color: #ff2e5540;
         }
 
@@ -385,7 +299,7 @@
             background: #c82345;
         }
 
-        /* ─── FOOTER ─── */
+        /* FOOTER */
         footer {
             background: #111827;
             padding: 28px 20px;
@@ -399,7 +313,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, transparent, rgba(255, 46, 85, 0.08));
+            background: linear-gradient(135deg, transparent, rgba(255,46,85,0.08));
             opacity: 0;
             transition: 0.3s;
             pointer-events: none;
@@ -410,7 +324,7 @@
             opacity: 1;
         }
 
-        /* ========== MOBILE OPTIMIZATION ========== */
+        /* ========== MOBILE OPTIMIZATION (max-width: 768px) ========== */
         @media (max-width: 768px) {
             body {
                 overflow: auto;
@@ -428,24 +342,29 @@
                 gap: 12px;
             }
 
+            /* ── HEADER MOBILE STYLES (now match explore.html) ── */
             .logo {
                 justify-content: center;
-                font-size: 44px;
+                font-size: 28px;      /* was 44px */
             }
+
             .logo span {
-                font-size: 45px;
+                font-size: 30px;      /* was 45px */
             }
+
             .logo-icon {
-                height: 60px;
+                height: 36px;         /* was 60px */
             }
 
             .search-box {
                 width: 100%;
             }
+
             .search-box input {
                 padding: 14px 16px;
                 font-size: 16px;
             }
+
             .search-box button {
                 padding: 14px 20px;
             }
@@ -456,6 +375,7 @@
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
             }
+
             nav a {
                 font-size: 15px;
             }
@@ -464,7 +384,7 @@
                 margin: 20px 4%;
                 min-height: 280px;
                 border-radius: 20px;
-                animation: none;
+                animation: none; /* smoother on mobile, no float */
                 background-position: center 40%;
             }
 
@@ -515,7 +435,7 @@
             .products {
                 padding: 0 4% 40px;
                 gap: 20px;
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr;  /* single column on mobile */
             }
 
             .preview {
@@ -546,6 +466,7 @@
             }
         }
 
+        /* small devices (below 480px) */
         @media (max-width: 480px) {
             .hero-content h1 {
                 font-size: 28px;
@@ -571,35 +492,34 @@
 </head>
 <body>
 
-    <!-- SCROLLABLE CONTAINER -->
+    <!-- SCROLLABLE CONTAINER (keeps custom scrollbar) -->
     <div class="main-scroll">
 
         <header>
             <div class="logo">
-                <img src="store/strawberryicon.png" alt="icon" class="logo-icon" onerror="this.src='https://placehold.co/60x60?text=🍓'" />
+                <img src="../images/store/strawberryicon.png" alt="icon" class="logo-icon" onerror="this.src='https://placehold.co/40x40?text=🍓'">
                 <span>Straw</span>berry Asset<span>Hub</span>
             </div>
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Search assets..." />
+                <input type="text" id="searchInput" placeholder="Search assets...">
                 <button onclick="searchAssets()">Search</button>
             </div>
         </header>
 
         <nav>
-            <a href="pages/explore.html">Explore All</a>
-            <a href="https://www.pixelcut.ai/background-remover" target="_blank">BG Remove</a>
-            <a href="https://picsart.com/image-upscale/" target="_blank">Upscale</a>
-            <a href="https://gemini.google.com/app" target="_blank">Ai Artist</a>
-            <a href="https://web.blockbench.net/" target="_blank">3D & 2D</a>
+            <a href="../index.html">Home</a>
+            <a href="https://www.pixelcut.ai/background-remover">BG Remove</a>
+            <a href="https://picsart.com/image-upscale/">Upscale</a>
+            <a href="https://gemini.google.com/app">Ai Artist</a>
+            <a href="https://web.blockbench.net/">3D & 2D</a>
         </nav>
 
-        <!-- HERO BANNER with GLOW BUTTON -->
         <section class="hero-banner">
             <div class="hero-content">
                 <h4>HIGH QUALITY</h4>
-                <h1>GAME ASSETS<br />FOR DEVELOPERS</h1>
+                <h1>GAME ASSETS<br>FOR DEVELOPERS</h1>
                 <p>Game-ready assets for your next project.</p>
-                <a href="pages/explore.html" class="hero-btn">🚀 Explore Assets</a>
+                <a href="explore.html" class="hero-btn">Explore Assets</a>
             </div>
         </section>
 
@@ -620,53 +540,61 @@
     </div>
 
     <script>
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        //  ASSET DATABASE
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-        const assets = [{
-            name: "Warrior Animation Pack",
-            category: "2D Animation",
-            thumbnail: "store/coldwheels.png",
-            gif: "images/animation1.gif",
-            tag: "🔥 Popular",
-            link: "https://your-superprofile-link"
-        }, {
-            name: "Fantasy Weapon Set",
-            category: "Weapons",
-            thumbnail: "store/genshin_x_craft.png",
-            gif: "images/weapon1.gif",
-            tag: "✨ Premium",
-            link: "https://your-superprofile-link"
-        }, {
-            name: "Enchanted Forest Background",
-            category: "2D Background",
-            thumbnail: "store/top.png",
-            gif: "images/background1.gif",
-            tag: "🆕 New",
-            link: "https://your-superprofile-link"
-        }, {
-            name: "Castle Ruins (Icon Set)",
-            category: "Icons",
-            thumbnail: "store/discord_banner.png",
-            gif: "images/background2.gif",
-            tag: "🎁 Free",
-            link: "https://your-superprofile-link"
-        }, {
-            name: "Dragon Slayer Animations",
-            category: "2D Animation",
-            thumbnail: "store/youtube_banner.png",
-            gif: "images/dragon.gif",
-            tag: "🏆 Top Rated",
-            link: "https://your-superprofile-link"
-        }, {
-            name: "Mythic Blades Pack",
-            category: "Weapons",
-            thumbnail: "store/hollow_knight.png",
-            gif: "images/blades.gif",
-            tag: "⚡ Limited",
-            link: "https://your-superprofile-link"
-        }];
+        /*
+        =========================================
+        ASSET DATABASE — Easily extendable
+        =========================================
+        */
+        const assets = [
+            {
+                name: "Warrior Animation Pack",
+                category: "2D Animation",
+                thumbnail: "../images/coldwheels.png",
+                gif: "images/animation1.gif",
+                tag: "🔥 Popular",
+                link: "https://your-superprofile-link"
+            },
+            {
+                name: "Fantasy Weapon Set",
+                category: "Weapons",
+                thumbnail: "../images/genshin_x_craft.png",
+                gif: "images/weapon1.gif",
+                tag: "✨ Premium",
+                link: "https://your-superprofile-link"
+            },
+            {
+                name: "Enchanted Forest Background",
+                category: "2D Background",
+                thumbnail: "../images/top.png",
+                gif: "images/background1.gif",
+                tag: "🆕 New",
+                link: "https://your-superprofile-link"
+            },
+            {
+                name: "Castle Ruins (Icon Set)",
+                category: "Icons",
+                thumbnail: "../images/discord_banner.png",
+                gif: "images/background2.gif",
+                tag: "🎁 Free",
+                link: "https://your-superprofile-link"
+            },
+            {
+                name: "Dragon Slayer Animations",
+                category: "2D Animation",
+                thumbnail: "../images/youtube_banner.png",
+                gif: "images/dragon.gif",
+                tag: "🏆 Top Rated",
+                link: "https://your-superprofile-link"
+            },
+            {
+                name: "Mythic Blades Pack",
+                category: "Weapons",
+                thumbnail: "../images/hollow_knight.png",
+                gif: "images/blades.gif",
+                tag: "⚡ Limited",
+                link: "https://your-superprofile-link"
+            }
+        ];
 
         const container = document.getElementById("productContainer");
 
@@ -674,13 +602,13 @@
             if (!container) return;
             container.innerHTML = "";
             if (list.length === 0) {
-                container.innerHTML =
-                    `<div style="grid-column:1/-1; text-align:center; padding:40px; color:#aaa;">No assets found 🍓</div>`;
+                container.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:40px; color:#aaa;">No assets found 🍓</div>`;
                 return;
             }
             list.forEach(asset => {
                 const card = document.createElement("div");
                 card.className = "card";
+                // fallback image if not exists
                 const thumbSrc = asset.thumbnail;
                 const gifSrc = asset.gif;
                 card.innerHTML = `
@@ -696,6 +624,7 @@
 
                 const img = card.querySelector(".preview");
 
+                // Desktop hover effect (gif preview)
                 if (img.dataset.gif && img.dataset.gif !== "") {
                     img.addEventListener("mouseenter", () => {
                         img.src = img.dataset.gif;
@@ -704,8 +633,9 @@
                         img.src = img.dataset.static;
                     });
 
+                    // Mobile: long press to show gif (500ms)
                     let pressTimer;
-                    img.addEventListener("touchstart", () => {
+                    img.addEventListener("touchstart", (e) => {
                         pressTimer = setTimeout(() => {
                             img.src = img.dataset.gif;
                         }, 500);
@@ -722,6 +652,7 @@
             });
         }
 
+        // initial render
         renderAssets(assets);
 
         function filterAssets(category) {
@@ -739,13 +670,11 @@
                 renderAssets(assets);
                 return;
             }
-            const filtered = assets.filter(asset =>
-                asset.name.toLowerCase().includes(keyword) ||
-                asset.category.toLowerCase().includes(keyword)
-            );
+            const filtered = assets.filter(asset => asset.name.toLowerCase().includes(keyword) || asset.category.toLowerCase().includes(keyword));
             renderAssets(filtered);
         }
 
+        // optional: allow Enter key on search input
         document.getElementById("searchInput")?.addEventListener("keypress", function(e) {
             if (e.key === "Enter") {
                 e.preventDefault();
@@ -753,6 +682,7 @@
             }
         });
 
+        // fix for any missing images globally (graceful fallback)
         document.querySelectorAll('.preview').forEach(img => {
             img.addEventListener('error', function() {
                 if (!this.src.includes('placehold.co')) {
@@ -761,6 +691,5 @@
             });
         });
     </script>
-
 </body>
 </html>
