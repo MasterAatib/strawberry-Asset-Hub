@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <!-- ===== FAVICON ===== -->
+    <link rel="icon" href="../images/store/strawberryicon.png" type="image/png" />
+    <link rel="shortcut icon" href="../images/store/strawberryicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="../images/store/strawberryicon.png" />
+
+    <!-- ===== OPEN GRAPH (OG) TAGS ===== -->
+    <meta property="og:title" content="Strawberry Asset Hub — Game Assets for Developers" />
+    <meta property="og:description" content="High-quality game-ready assets: 2D animations, weapons, backgrounds, icons & more. Free & paid options with affordable pricing." />
+    <meta property="og:image" content="https://yourdomain.com/images/store/og-banner.jpg" />
+    <!-- ^ replace with your actual OG image URL -->
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://yourdomain.com/explore.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Strawberry Asset Hub" />
+
+    <!-- ===== TWITTER CARD ===== -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Strawberry Asset Hub — Game Assets for Developers" />
+    <meta name="twitter:description" content="High-quality game-ready assets: 2D animations, weapons, backgrounds, icons & more." />
+    <meta name="twitter:image" content="https://yourdomain.com/images/store/og-banner.jpg" />
+
+    <title>Strawberry Asset Hub</title>
+
+    <style>
+        /* ─── RESET & BASE (unchanged) ─── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #0d1117;
+            color: white;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .main-scroll {
+            height: 100vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .main-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+        .main-scroll::-webkit-scrollbar-thumb {
+            background: #ff2e55;
+            border-radius: 20px;
+        }
+        .main-scroll::-webkit-scrollbar-track {
+            background: #161b22;
+        }
+
+        /* ─── HEADER ─── */
+        header {
+            background: #111827;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+        .logo span {
+            color: #ff2e55;
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .logo-icon {
+            height: 62px;
+            width: auto;
+            vertical-align: middle;
+        }
+
+        .search-box {
+            display: flex;
+            width: 380px;
+            max-width: 100%;
+        }
+        .search-box input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            outline: none;
+            background: #1f2937;
+            color: white;
+            border-radius: 8px 0 0 8px;
+            font-size: 16px;
+        }
+        .search-box button {
+            padding: 12px 20px;
+            border: none;
+            background: #ff2e55;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 0 8px 8px 0;
+            transition: background 0.2s;
+        }
+        .search-box button:hover {
+            background: #e0294c;
+        }
+
+        /* ─── NAV ─── */
+        nav {
+            background: #161b22;
+            padding: 12px 5%;
+            display: flex;
+            gap: 25px;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: thin;
+        }
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            padding: 5px 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+        }
+        nav a:hover {
+            color: #ff2e55;
+            border-bottom-color: #ff2e55;
+        }
+
+        /* ─── HERO BANNER ─── */
+        .hero-banner {
+            margin: 30px 5%;
+            border-radius: 24px;
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.0)), url("../images/store/hollow_knight.webp");
+            background-size: cover;
+            background-position: center 30%;
+            display: flex;
+            align-items: center;
+            min-height: 420px;
+            transition: all 0.3s;
+            animation: floatHero 4s ease-in-out infinite;
+        }
+
+        @keyframes floatHero {
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .hero-content {
+            padding: 40px 50px;
+            max-width: 650px;
+        }
+
+        .hero-content h4 {
+            color: #ff2e55;
+            font-size: 18px;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+        }
+
+        .hero-content h1 {
+            font-size: 52px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 28px;
+            color: #e5e7eb;
+            line-height: 1.4;
+        }
+
+        /* ===== ✨ GLOW BUTTON — RGB + pulse on hover ===== */
+        .hero-btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: #ff2e55;
+            color: white;
+            text-decoration: none;
+            border-radius: 40px;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.3s, background 0.3s;
+            position: relative;
+            z-index: 1;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 12px rgba(255, 46, 85, 0.4);
+        }
+
+        /* RGB glow ring on hover — animated rainbow border */
+        .hero-btn::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 44px;
+            background: conic-gradient(from 0deg,
+                    #ff2e55, #ff6b35, #f7c948, #4ecdc4, #6c5ce7, #ff2e55);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            animation: rgbSpin 3s linear infinite;
+            filter: blur(2px);
+        }
+
+        .hero-btn:hover::before {
+            opacity: 1;
+        }
+
+        .hero-btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 40px;
+            background: #ff2e55;
+            z-index: -1;
+            transition: background 0.3s;
+        }
+
+        .hero-btn:hover::after {
+            background: #e0294c;
+        }
+
+        /* pulse glow on hover (extra pop) */
+        .hero-btn:hover {
+            transform: scale(1.05);
+            box-shadow:
+                0 0 20px rgba(255, 46, 85, 0.6),
+                0 0 60px rgba(255, 46, 85, 0.3),
+                0 0 100px rgba(255, 46, 85, 0.15);
+            animation: pulseGlow 1.2s ease-in-out infinite;
+        }
+
+        @keyframes rgbSpin {
+            0% {
+                filter: hue-rotate(0deg) blur(3px);
+            }
+            100% {
+                filter: hue-rotate(360deg) blur(3px);
+            }
+        }
+
+        @keyframes pulseGlow {
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(255, 46, 85, 0.6), 0 0 60px rgba(255, 46, 85, 0.3), 0 0 100px rgba(255, 46, 85, 0.15);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(255, 46, 85, 0.9), 0 0 80px rgba(255, 46, 85, 0.5), 0 0 140px rgba(255, 46, 85, 0.25);
+            }
+        }
+
+        .hero-btn:hover {
+            background: #e0294c;
+            transform: scale(1.05);
+        }
+
+        /* ─── FILTER BAR ─── */
+        .filter-bar {
+            padding: 10px 5% 20px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 18px;
+            background: #161b22;
+            border: 1px solid #2d333b;
+            color: white;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .filter-btn:hover {
+            background: #ff2e55;
+            border-color: #ff2e55;
+        }
+
+        /* ─── SECTION TITLE ─── */
+        .section-title {
+            padding: 0 5% 20px;
+            font-size: 32px;
+            font-weight: bold;
+            letter-spacing: -0.5px;
+        }
+
+        /* ─── PRODUCT GRID ─── */
+        .products {
+            padding: 0 5% 50px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 28px;
+        }
+
+        .card {
+            background: #161b22;
+            border: 1px solid #2d333b;
+            border-radius: 18px;
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.2s;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+            border-color: #ff2e5540;
+        }
+
+        .preview {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background: #0a0f16;
+            transition: 0.2s;
+        }
+
+        .card-content {
+            padding: 18px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .category {
+            color: #9ca3af;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .asset-name {
+            font-size: 22px;
+            font-weight: bold;
+            margin: 10px 0 8px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #ff2e55;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: bold;
+            width: fit-content;
+            margin-bottom: 16px;
+        }
+
+        .visit-btn {
+            display: block;
+            text-align: center;
+            padding: 12px;
+            background: #ff2e55;
+            text-decoration: none;
+            color: white;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: background 0.2s;
+            margin-top: auto;
+        }
+
+        .visit-btn:hover {
+            background: #c82345;
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: #111827;
+            padding: 28px 20px;
+            text-align: center;
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+        /* hover glow effect */
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(255, 46, 85, 0.08));
+            opacity: 0;
+            transition: 0.3s;
+            pointer-events: none;
+            border-radius: 18px;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        /* ========== MOBILE OPTIMIZATION ========== */
+        @media (max-width: 768px) {
+            body {
+                overflow: auto;
+            }
+            .main-scroll {
+                height: auto;
+                overflow-y: visible;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+                padding: 16px 5%;
+                gap: 12px;
+            }
+
+            .logo {
+                justify-content: center;
+                font-size: 44px;
+            }
+            .logo span {
+                font-size: 45px;
+            }
+            .logo-icon {
+                height: 60px;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+            .search-box input {
+                padding: 14px 16px;
+                font-size: 16px;
+            }
+            .search-box button {
+                padding: 14px 20px;
+            }
+
+            nav {
+                gap: 20px;
+                padding: 12px 5%;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            nav a {
+                font-size: 15px;
+            }
+
+            .hero-banner {
+                margin: 20px 4%;
+                min-height: 280px;
+                border-radius: 20px;
+                animation: none;
+                background-position: center 40%;
+            }
+
+            .hero-content {
+                padding: 30px 24px;
+                max-width: 100%;
+            }
+
+            .hero-content h4 {
+                font-size: 14px;
+                letter-spacing: 2px;
+                margin-bottom: 8px;
+            }
+
+            .hero-content h1 {
+                font-size: 32px;
+                line-height: 1.25;
+                margin-bottom: 12px;
+            }
+
+            .hero-content p {
+                font-size: 16px;
+                margin-bottom: 22px;
+            }
+
+            .hero-btn {
+                padding: 12px 28px;
+                font-size: 15px;
+                display: inline-block;
+            }
+
+            .filter-bar {
+                padding: 5px 4% 20px;
+                gap: 10px;
+                justify-content: center;
+            }
+
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+
+            .section-title {
+                font-size: 26px;
+                padding: 0 4% 12px;
+            }
+
+            .products {
+                padding: 0 4% 40px;
+                gap: 20px;
+                grid-template-columns: 1fr;
+            }
+
+            .preview {
+                height: 200px;
+            }
+
+            .asset-name {
+                font-size: 20px;
+            }
+
+            .card-content {
+                padding: 16px;
+            }
+
+            .tag {
+                font-size: 11px;
+                padding: 4px 10px;
+            }
+
+            .visit-btn {
+                padding: 12px;
+                font-size: 15px;
+            }
+
+            footer {
+                padding: 20px 16px;
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 28px;
+            }
+            .hero-content p {
+                font-size: 14px;
+            }
+            .hero-btn {
+                padding: 10px 22px;
+            }
+            .filter-btn {
+                padding: 6px 14px;
+                font-size: 13px;
+            }
+            .section-title {
+                font-size: 24px;
+            }
+            .preview {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SCROLLABLE CONTAINER -->
+    <div class="main-scroll">
+
+        <header>
+            <div class="logo">
+                <img src="../images/store/strawberryicon.png" alt="icon" class="logo-icon" onerror="this.src='https://placehold.co/60x60?text=🍓'" />
+                <span>Straw</span>berry Asset<span>Hub</span>
+            </div>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search assets..." />
+                <button onclick="searchAssets()">Search</button>
+            </div>
+        </header>
+
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="https://www.pixelcut.ai/background-remover">BG Remove</a>
+            <a href="https://picsart.com/image-upscale/">Upscale</a>
+            <a href="https://gemini.google.com/app">Ai Artist</a>
+            <a href="https://web.blockbench.net/">3D & 2D</a>
+        </nav>
+
+        <!-- HERO BANNER with GLOW BUTTON -->
+        <section class="hero-banner">
+            <div class="hero-content">
+                <h4>HIGH QUALITY</h4>
+                <h1>GAME ASSETS<br />FOR DEVELOPERS</h1>
+                <p>Game-ready assets for your next project.</p>
+                <a href="explore.html" class="hero-btn">🚀 Explore Assets</a>
+            </div>
+        </section>
+
+        <div class="filter-bar">
+            <button class="filter-btn" onclick="filterAssets('All')">All</button>
+            <button class="filter-btn" onclick="filterAssets('2D Animation')">2D Animation</button>
+            <button class="filter-btn" onclick="filterAssets('Weapons')">Weapons</button>
+            <button class="filter-btn" onclick="filterAssets('2D Background')">2D Background</button>
+            <button class="filter-btn" onclick="filterAssets('Icons')">Icon's</button>
+        </div>
+
+        <div class="section-title">✨ Latest Assets</div>
+
+        <div class="products" id="productContainer"></div>
+
+        <footer>© 2026 Strawberry Asset Hub — All creative resources</footer>
+
+    </div>
+
+    <script>
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        //  ASSET DATABASE
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+        const assets = [{
+            name: "Warrior Animation Pack",
+            category: "2D Animation",
+            thumbnail: "../images/coldwheels.png",
+            gif: "images/animation1.gif",
+            tag: "🔥 Popular",
+            link: "https://your-superprofile-link"
+        }, {
+            name: "Fantasy Weapon Set",
+            category: "Weapons",
+            thumbnail: "../images/genshin_x_craft.png",
+            gif: "images/weapon1.gif",
+            tag: "✨ Premium",
+            link: "https://your-superprofile-link"
+        }, {
+            name: "Enchanted Forest Background",
+            category: "2D Background",
+            thumbnail: "../images/top.png",
+            gif: "images/background1.gif",
+            tag: "🆕 New",
+            link: "https://your-superprofile-link"
+        }, {
+            name: "Castle Ruins (Icon Set)",
+            category: "Icons",
+            thumbnail: "../images/discord_banner.png",
+            gif: "images/background2.gif",
+            tag: "🎁 Free",
+            link: "https://your-superprofile-link"
+        }, {
+            name: "Dragon Slayer Animations",
+            category: "2D Animation",
+            thumbnail: "../images/youtube_banner.png",
+            gif: "images/dragon.gif",
+            tag: "🏆 Top Rated",
+            link: "https://your-superprofile-link"
+        }, {
+            name: "Mythic Blades Pack",
+            category: "Weapons",
+            thumbnail: "../images/hollow_knight.png",
+            gif: "images/blades.gif",
+            tag: "⚡ Limited",
+            link: "https://your-superprofile-link"
+        }];
+
+        const container = document.getElementById("productContainer");
+
+        function renderAssets(list) {
+            if (!container) return;
+            container.innerHTML = "";
+            if (list.length === 0) {
+                container.innerHTML =
+                    `<div style="grid-column:1/-1; text-align:center; padding:40px; color:#aaa;">No assets found 🍓</div>`;
+                return;
+            }
+            list.forEach(asset => {
+                const card = document.createElement("div");
+                card.className = "card";
+                const thumbSrc = asset.thumbnail;
+                const gifSrc = asset.gif;
+                card.innerHTML = `
+                    <img class="preview" src="${thumbSrc}" data-static="${thumbSrc}" data-gif="${gifSrc}" loading="lazy" onerror="this.src='https://placehold.co/400x220/1f2937/ff2e55?text=Strawberry'">
+                    <div class="card-content">
+                        <div class="category">📁 ${asset.category}</div>
+                        <div class="asset-name">${asset.name}</div>
+                        <div class="tag">${asset.tag}</div>
+                        <a href="${asset.link}" target="_blank" class="visit-btn">🔍 View Asset</a>
+                    </div>
+                `;
+                container.appendChild(card);
+
+                const img = card.querySelector(".preview");
+
+                if (img.dataset.gif && img.dataset.gif !== "") {
+                    img.addEventListener("mouseenter", () => {
+                        img.src = img.dataset.gif;
+                    });
+                    img.addEventListener("mouseleave", () => {
+                        img.src = img.dataset.static;
+                    });
+
+                    let pressTimer;
+                    img.addEventListener("touchstart", () => {
+                        pressTimer = setTimeout(() => {
+                            img.src = img.dataset.gif;
+                        }, 500);
+                    });
+                    img.addEventListener("touchend", () => {
+                        clearTimeout(pressTimer);
+                        img.src = img.dataset.static;
+                    });
+                    img.addEventListener("touchcancel", () => {
+                        clearTimeout(pressTimer);
+                        img.src = img.dataset.static;
+                    });
+                }
+            });
+        }
+
+        renderAssets(assets);
+
+        function filterAssets(category) {
+            if (category === "All") {
+                renderAssets(assets);
+                return;
+            }
+            const filtered = assets.filter(a => a.category === category);
+            renderAssets(filtered);
+        }
+
+        function searchAssets() {
+            const keyword = document.getElementById("searchInput").value.toLowerCase().trim();
+            if (keyword === "") {
+                renderAssets(assets);
+                return;
+            }
+            const filtered = assets.filter(asset =>
+                asset.name.toLowerCase().includes(keyword) ||
+                asset.category.toLowerCase().includes(keyword)
+            );
+            renderAssets(filtered);
+        }
+
+        document.getElementById("searchInput")?.addEventListener("keypress", function(e) {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                searchAssets();
+            }
+        });
+
+        document.querySelectorAll('.preview').forEach(img => {
+            img.addEventListener('error', function() {
+                if (!this.src.includes('placehold.co')) {
+                    this.src = 'https://placehold.co/400x220/1f2937/ff2e55?text=🍓+Asset';
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
