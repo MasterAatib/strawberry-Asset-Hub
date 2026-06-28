@@ -269,17 +269,6 @@
             box-shadow: 0 0 28px rgba(255, 46, 85, 0.5);
         }
 
-        .sorry-btn-secondary {
-            background: #1f2937;
-            color: white;
-            border: 1px solid #2d333b;
-        }
-        .sorry-btn-secondary:hover {
-            background: #2d3748;
-            border-color: #ff2e55;
-            box-shadow: 0 0 20px rgba(255, 46, 85, 0.15);
-        }
-
         .sorry-btn-discord {
             background: #5865f2;
             color: white;
@@ -463,7 +452,8 @@
 
                 <!-- BUTTONS -->
                 <div class="sorry-actions">
-                    <a href="explore.html" class="sorry-btn sorry-btn-primary">🍓 Explore Assets</a>
+                    <!-- 🟢 CHANGED: now closes the tab instead of navigating -->
+                    <button onclick="closeTab()" class="sorry-btn sorry-btn-primary">🍓 Explore Assets</button>
                     <a href="https://discord.gg/your-invite-link" target="_blank" class="sorry-btn sorry-btn-discord">💬 Join Discord</a>
                 </div>
 
@@ -483,6 +473,22 @@
                 window.location.href = "explore.html";
             }
         });
+
+        // ─── CLOSE TAB FUNCTION ───
+        function closeTab() {
+            try {
+                window.close();
+                // If window.close() works, the tab closes and the code below won't run.
+                // But if it fails (e.g., browser blocks it), we redirect as fallback.
+                setTimeout(function() {
+                    // If the tab is still open after 500ms, close() likely failed.
+                    window.location.href = "explore.html";
+                }, 500);
+            } catch (e) {
+                // Fallback: navigate to explore.html
+                window.location.href = "explore.html";
+            }
+        }
     </script>
 
 </body>
