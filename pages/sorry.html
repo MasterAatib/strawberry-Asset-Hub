@@ -282,11 +282,27 @@
         /* ─── FOOTER ─── */
         footer {
             background: #111827;
-            padding: 28px 20px;
+            padding: 28px 5% 20px;
             text-align: center;
             color: #9ca3af;
             font-size: 14px;
+            border-top: 1px solid #1f2937;
             margin-top: 20px;
+        }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 16px;
+        }
+        .footer-links a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover {
+            color: #ff2e55;
         }
 
         /* ─── MOBILE ─── */
@@ -380,6 +396,10 @@
                 padding: 20px 16px;
                 font-size: 13px;
             }
+            .footer-links {
+                gap: 14px;
+                font-size: 13px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -448,12 +468,12 @@
                     We're sorry, but this Asset file is <strong>currently not available</strong> for purchase in <strong>USD</strong>.
                 </p>
                 <p class="sorry-message" style="margin-bottom: 6px;">
-                    You can still buy it using <strong style="color:#f7c948;">INR</strong> at 5 times lower price — or join our <strong style="color:#5865f2;">Discord</strong> to get notified when USD payment is available.
+                    You can still buy it with <strong style="color:#f7c948;">INR</strong> at 5 times lower price
                 </p>
 
                 <!-- HINT / EXTRA -->
                 <div class="sorry-hint">
-                    💡 <span>Pro tip:</span> Switch to INR for instant access, or subscribe to <strong>#payment-updates</strong> on Discord.
+                    💡 <span>Tip:</span> Switch to INR for instant access or Subscribe to <strong>#payment-updates</strong> on Discord.
                 </div>
 
                 <!-- BUTTONS -->
@@ -466,8 +486,16 @@
             </div>
         </section>
 
-        <!-- FOOTER -->
-        <footer>© 2026 Strawberry Asset Hub — All creative resources</footer>
+        <!-- ─── FOOTER ─── -->
+        <footer>
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#faq">FAQ</a>
+                <a href="#changelog">Changelog</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p>© 2026 Strawberry Asset Hub — All creative resources</p>
+        </footer>
 
     </div>
 
