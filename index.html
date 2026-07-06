@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Explore All · Strawberry Asset Hub</title>
+    <title>Strawberry Asset Hub</title>
     <!-- ===== FAVICON ===== -->
     <link rel="icon" href="store/strawberryicon.png" type="image/png" />
     <link rel="shortcut icon" href="store/strawberryicon.png" type="image/png" />
@@ -14,14 +14,14 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Strawberry Asset Hub" />
     <meta property="og:description" content="Discover high-quality, Game-ready assets at affordable rates, exceptionally low prices and even entirely free options. Empower your game development journey by downloading classy weapon's models, stunning Background, various 2d animations without breaking your project budget." />
-    <meta property="og:url" content="https://github.io" />
+    <meta property="og:url" content="https://masteraatib.github.io/strawberry-Asset-Hub/" />
     <meta property="og:image" content="https://masteraatib.github.io/strawberry-Asset-Hub/store/store_banner.png" />
-    <!-- Explicit dimensions help bots find the image immediately -->
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
 
     <title>Strawberry Asset Hub</title>
     <style>
+        /* ─── RESET & BASE ─── */
         * {
             margin: 0;
             padding: 0;
@@ -33,7 +33,7 @@
             background: #0d1117;
             color: white;
             height: 100vh;
-            overflow: hidden;   /* prevents browser scroll, using internal scroll */
+            overflow: hidden;
         }
 
         .main-scroll {
@@ -43,7 +43,6 @@
             scroll-behavior: smooth;
         }
 
-        /* custom scrollbar */
         .main-scroll::-webkit-scrollbar {
             width: 8px;
         }
@@ -55,7 +54,7 @@
             background: #161b22;
         }
 
-        /* HEADER */
+        /* ─── HEADER ─── */
         header {
             background: #111827;
             padding: 15px 5%;
@@ -74,13 +73,11 @@
             gap: 5px;
             flex-wrap: wrap;
         }
-
         .logo span {
             color: #ff2e55;
             font-size: 36px;
             font-weight: bold;
         }
-
         .logo-icon {
             height: 62px;
             width: auto;
@@ -92,7 +89,6 @@
             width: 380px;
             max-width: 100%;
         }
-
         .search-box input {
             flex: 1;
             padding: 12px 15px;
@@ -103,7 +99,6 @@
             border-radius: 8px 0 0 8px;
             font-size: 16px;
         }
-
         .search-box button {
             padding: 12px 20px;
             border: none;
@@ -114,12 +109,11 @@
             border-radius: 0 8px 8px 0;
             transition: background 0.2s;
         }
-
         .search-box button:hover {
             background: #e0294c;
         }
 
-        /* NAV */
+        /* ─── NAV ─── */
         nav {
             background: #161b22;
             padding: 12px 5%;
@@ -129,7 +123,6 @@
             white-space: nowrap;
             scrollbar-width: thin;
         }
-
         nav a {
             text-decoration: none;
             color: white;
@@ -138,13 +131,12 @@
             border-bottom: 2px solid transparent;
             transition: 0.2s;
         }
-
         nav a:hover {
             color: #ff2e55;
             border-bottom-color: #ff2e55;
         }
 
-        /* HERO BANNER */
+        /* ─── HERO BANNER ─── */
         .hero-banner {
             margin: 30px 5%;
             border-radius: 24px;
@@ -166,20 +158,17 @@
             padding: 40px 50px;
             max-width: 650px;
         }
-
         .hero-content h4 {
             color: #ff2e55;
             font-size: 18px;
             letter-spacing: 3px;
             margin-bottom: 12px;
         }
-
         .hero-content h1 {
             font-size: 52px;
             line-height: 1.2;
             margin-bottom: 20px;
         }
-
         .hero-content p {
             font-size: 18px;
             margin-bottom: 28px;
@@ -187,6 +176,7 @@
             line-height: 1.4;
         }
 
+        /* ===== ✨ GLOW BUTTON — RGB + pulse on hover (RESTORED) ===== */
         .hero-btn {
             display: inline-block;
             padding: 14px 32px;
@@ -195,20 +185,80 @@
             text-decoration: none;
             border-radius: 40px;
             font-weight: bold;
-            transition: background 0.2s, transform 0.1s;
+            transition: transform 0.2s, box-shadow 0.3s, background 0.3s;
+            position: relative;
+            z-index: 1;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 12px rgba(255, 46, 85, 0.4);
         }
 
-        .hero-btn:hover {
+        /* RGB glow ring on hover — animated rainbow border */
+        .hero-btn::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 44px;
+            background: conic-gradient(from 0deg,
+                    #ff2e55, #ff6b35, #f7c948, #4ecdc4, #6c5ce7, #ff2e55);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            animation: rgbSpin 3s linear infinite;
+            filter: blur(2px);
+        }
+
+        .hero-btn:hover::before {
+            opacity: 1;
+        }
+
+        .hero-btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 40px;
+            background: #ff2e55;
+            z-index: -1;
+            transition: background 0.3s;
+        }
+
+        .hero-btn:hover::after {
             background: #e0294c;
-            transform: scale(1.02);
         }
 
-        /* FILTER BAR */
+        /* pulse glow on hover (extra pop) */
+        .hero-btn:hover {
+            transform: scale(1.05);
+            box-shadow:
+                0 0 20px rgba(255, 46, 85, 0.6),
+                0 0 60px rgba(255, 46, 85, 0.3),
+                0 0 100px rgba(255, 46, 85, 0.15);
+            animation: pulseGlow 1.2s ease-in-out infinite;
+        }
+
+        @keyframes rgbSpin {
+            0% { filter: hue-rotate(0deg) blur(3px); }
+            100% { filter: hue-rotate(360deg) blur(3px); }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 46, 85, 0.6), 0 0 60px rgba(255, 46, 85, 0.3), 0 0 100px rgba(255, 46, 85, 0.15); }
+            50% { box-shadow: 0 0 30px rgba(255, 46, 85, 0.9), 0 0 80px rgba(255, 46, 85, 0.5), 0 0 140px rgba(255, 46, 85, 0.25); }
+        }
+
+        /* ─── FILTER BAR + SORT + CLEAR ─── */
         .filter-bar {
             padding: 10px 5% 20px;
             display: flex;
-            gap: 12px;
             flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .filter-btn {
@@ -221,13 +271,53 @@
             font-weight: 500;
             transition: all 0.2s;
         }
-
         .filter-btn:hover {
             background: #ff2e55;
             border-color: #ff2e55;
         }
+        .filter-btn.active {
+            background: #ff2e55;
+            border-color: #ff2e55;
+        }
 
-        /* SECTION TITLE */
+        .filter-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+            margin-left: auto;
+        }
+
+        .sort-select {
+            padding: 8px 14px;
+            background: #161b22;
+            border: 1px solid #2d333b;
+            color: white;
+            border-radius: 30px;
+            font-size: 14px;
+            cursor: pointer;
+            outline: none;
+        }
+        .sort-select:hover {
+            border-color: #ff2e55;
+        }
+
+        .clear-btn {
+            padding: 8px 18px;
+            background: transparent;
+            border: 1px solid #5865f2;
+            color: #5865f2;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .clear-btn:hover {
+            background: #5865f2;
+            color: white;
+        }
+
+        /* ─── SECTION TITLE ─── */
         .section-title {
             padding: 0 5% 20px;
             font-size: 32px;
@@ -235,11 +325,12 @@
             letter-spacing: -0.5px;
         }
 
-        /* PRODUCT GRID */
+        /* ─── PRODUCT GRID ─── */
         .products {
             padding: 0 5% 50px;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            /* 🔧 FIXED: 3 columns on desktop */
+            grid-template-columns: repeat(3, 1fr);
             gap: 28px;
         }
 
@@ -253,11 +344,23 @@
             display: flex;
             flex-direction: column;
         }
-
         .card:hover {
             transform: translateY(-6px);
             box-shadow: 0 12px 24px rgba(0,0,0,0.3);
             border-color: #ff2e5540;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(255,46,85,0.08));
+            opacity: 0;
+            transition: 0.3s;
+            pointer-events: none;
+            border-radius: 18px;
+        }
+        .card:hover::before {
+            opacity: 1;
         }
 
         .preview {
@@ -266,6 +369,44 @@
             object-fit: cover;
             background: #0a0f16;
             transition: 0.2s;
+        }
+
+        /* Skeleton loading */
+        .skeleton {
+            background: #1f2937;
+            border-radius: 12px;
+            animation: shimmer 1.2s infinite;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200px 0; }
+            100% { background-position: 200px 0; }
+        }
+        .skeleton-card {
+            background: #161b22;
+            border: 1px solid #2d333b;
+            border-radius: 18px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 340px;
+        }
+        .skeleton-preview {
+            height: 220px;
+            background: #1a1f2b;
+        }
+        .skeleton-line {
+            height: 16px;
+            background: #1a1f2b;
+            margin: 12px 18px;
+            border-radius: 8px;
+        }
+        .skeleton-line.short {
+            width: 60%;
+        }
+        .skeleton-line.tag {
+            width: 40%;
+            height: 24px;
+            border-radius: 30px;
         }
 
         .card-content {
@@ -288,15 +429,47 @@
             margin: 10px 0 8px;
         }
 
-        .tag {
-            display: inline-block;
-            padding: 4px 12px;
-            background: #ff2e55;
+        /* Better badges */
+        .tag-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 14px;
             border-radius: 30px;
             font-size: 12px;
             font-weight: bold;
             width: fit-content;
             margin-bottom: 16px;
+            background: #ff2e55;
+            color: white;
+        }
+        .tag-badge.free {
+            background: #0d7a3e;
+            color: #8bffb0;
+        }
+        .tag-badge.premium {
+            background: #7a2e3a;
+            color: #ff8a9a;
+        }
+        .tag-badge.popular {
+            background: #b45309;
+            color: #fde68a;
+        }
+        .tag-badge.new {
+            background: #1e40af;
+            color: #93c5fd;
+        }
+        .tag-badge.limited {
+            background: #991b1b;
+            color: #fca5a5;
+        }
+        .tag-badge.top-rated {
+            background: #6b21a5;
+            color: #d8b4fe;
+        }
+        .tag-badge.community {
+            background: #065f46;
+            color: #6ee7b7;
         }
 
         .visit-btn {
@@ -311,45 +484,74 @@
             transition: background 0.2s;
             margin-top: auto;
         }
-
         .visit-btn:hover {
             background: #c82345;
         }
 
-        /* FOOTER */
+        /* ─── BACK TO TOP ─── */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #ff2e55;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(255,46,85,0.4);
+            transition: opacity 0.3s, transform 0.2s;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 999;
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .back-to-top:hover {
+            transform: scale(1.1);
+            background: #e0294c;
+        }
+
+        /* ─── FOOTER ─── */
         footer {
             background: #111827;
-            padding: 28px 20px;
+            padding: 28px 5% 20px;
             text-align: center;
             color: #9ca3af;
             font-size: 14px;
+            border-top: 1px solid #1f2937;
+        }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 16px;
+        }
+        .footer-links a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover {
+            color: #ff2e55;
         }
 
-        /* hover glow effect */
-        .card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, transparent, rgba(255,46,85,0.08));
-            opacity: 0;
-            transition: 0.3s;
-            pointer-events: none;
-            border-radius: 18px;
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1024px) {
+            /* Tablet: 2 columns */
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
-        .card:hover::before {
-            opacity: 1;
-        }
-
-        /* ========== MOBILE OPTIMIZATION (max-width: 768px) ========== */
         @media (max-width: 768px) {
-            body {
-                overflow: auto;
-            }
-            .main-scroll {
-                height: auto;
-                overflow-y: visible;
-            }
+            body { overflow: auto; }
+            .main-scroll { height: auto; overflow-y: visible; }
 
             header {
                 flex-direction: column;
@@ -358,159 +560,86 @@
                 padding: 16px 5%;
                 gap: 12px;
             }
-
-            /* ── HEADER MOBILE STYLES (now match explore.html) ── */
             .logo {
                 justify-content: center;
-                font-size: 28px;      /* was 44px */
+                font-size: 28px;
             }
+            .logo span { font-size: 30px; }
+            .logo-icon { height: 36px; }
+            .search-box { width: 100%; }
+            .search-box input { padding: 14px 16px; font-size: 16px; }
+            .search-box button { padding: 14px 20px; }
 
-            .logo span {
-                font-size: 30px;      /* was 45px */
-            }
-
-            .logo-icon {
-                height: 36px;         /* was 60px */
-            }
-
-            .search-box {
-                width: 100%;
-            }
-
-            .search-box input {
-                padding: 14px 16px;
-                font-size: 16px;
-            }
-
-            .search-box button {
-                padding: 14px 20px;
-            }
-
-            nav {
-                gap: 20px;
-                padding: 12px 5%;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-            }
-
-            nav a {
-                font-size: 15px;
-            }
+            nav { gap: 20px; padding: 12px 5%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            nav a { font-size: 15px; }
 
             .hero-banner {
                 margin: 20px 4%;
                 min-height: 280px;
                 border-radius: 20px;
-                animation: none; /* smoother on mobile, no float */
+                animation: none;
                 background-position: center 40%;
             }
-
-            .hero-content {
-                padding: 30px 24px;
-                max-width: 100%;
-            }
-
-            .hero-content h4 {
-                font-size: 14px;
-                letter-spacing: 2px;
-                margin-bottom: 8px;
-            }
-
-            .hero-content h1 {
-                font-size: 32px;
-                line-height: 1.25;
-                margin-bottom: 12px;
-            }
-
-            .hero-content p {
-                font-size: 16px;
-                margin-bottom: 22px;
-            }
-
-            .hero-btn {
-                padding: 12px 28px;
-                font-size: 15px;
-                display: inline-block;
-            }
+            .hero-content { padding: 30px 24px; max-width: 100%; }
+            .hero-content h4 { font-size: 14px; letter-spacing: 2px; margin-bottom: 8px; }
+            .hero-content h1 { font-size: 32px; line-height: 1.25; margin-bottom: 12px; }
+            .hero-content p { font-size: 16px; margin-bottom: 22px; }
+            .hero-btn { padding: 12px 28px; font-size: 15px; display: inline-block; }
 
             .filter-bar {
+                flex-direction: column;
+                align-items: stretch;
                 padding: 5px 4% 20px;
-                gap: 10px;
+                gap: 12px;
+            }
+            .filter-group { justify-content: center; }
+            .filter-actions {
+                margin-left: 0;
                 justify-content: center;
+                flex-wrap: wrap;
             }
+            .filter-btn { padding: 8px 16px; font-size: 14px; }
+            .sort-select { font-size: 14px; }
+            .clear-btn { font-size: 14px; }
 
-            .filter-btn {
-                padding: 8px 16px;
-                font-size: 14px;
-            }
-
-            .section-title {
-                font-size: 26px;
-                padding: 0 4% 12px;
-            }
-
+            .section-title { font-size: 26px; padding: 0 4% 12px; }
             .products {
                 padding: 0 4% 40px;
                 gap: 20px;
-                grid-template-columns: 1fr;  /* single column on mobile */
+                /* 🔧 FIXED: Mobile stays 1 column */
+                grid-template-columns: 1fr;
             }
-
-            .preview {
-                height: 200px;
-            }
-
-            .asset-name {
-                font-size: 20px;
-            }
-
-            .card-content {
-                padding: 16px;
-            }
-
-            .tag {
-                font-size: 11px;
-                padding: 4px 10px;
-            }
-
-            .visit-btn {
-                padding: 12px;
-                font-size: 15px;
-            }
-
-            footer {
-                padding: 20px 16px;
-                font-size: 13px;
-            }
+            .preview { height: 200px; }
+            .asset-name { font-size: 20px; }
+            .card-content { padding: 16px; }
+            .tag-badge { font-size: 11px; padding: 3px 12px; }
+            .visit-btn { padding: 12px; font-size: 15px; }
+            .footer-links { gap: 14px; font-size: 13px; }
+            .back-to-top { bottom: 20px; right: 20px; width: 44px; height: 44px; font-size: 20px; }
         }
 
-        /* small devices (below 480px) */
         @media (max-width: 480px) {
-            .hero-content h1 {
-                font-size: 28px;
-            }
-            .hero-content p {
-                font-size: 14px;
-            }
-            .hero-btn {
-                padding: 10px 22px;
-            }
-            .filter-btn {
-                padding: 6px 14px;
-                font-size: 13px;
-            }
-            .section-title {
-                font-size: 24px;
-            }
-            .preview {
-                height: 180px;
+            .hero-content h1 { font-size: 28px; }
+            .hero-content p { font-size: 14px; }
+            .hero-btn { padding: 10px 22px; }
+            .filter-btn { padding: 6px 14px; font-size: 13px; }
+            .section-title { font-size: 24px; }
+            .preview { height: 180px; }
+            .sort-select { font-size: 13px; padding: 6px 12px; }
+            .clear-btn { font-size: 13px; padding: 6px 14px; }
+        }
+
+        @media (max-width: 600px) {
+            .products {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- SCROLLABLE CONTAINER (keeps custom scrollbar) -->
-    <div class="main-scroll">
+    <!-- SCROLLABLE CONTAINER -->
+    <div class="main-scroll" id="mainScroll">
 
         <header>
             <div class="logo">
@@ -541,33 +670,56 @@
             </div>
         </section>
 
+        <!-- FILTER BAR + SORT + CLEAR -->
         <div class="filter-bar">
-            <button class="filter-btn" onclick="filterAssets('All')">All</button>
-            <button class="filter-btn" onclick="filterAssets('2D Animation')">2D Animation</button>
-            <button class="filter-btn" onclick="filterAssets('Weapons')">Weapons</button>
-            <button class="filter-btn" onclick="filterAssets('2D Background')">2D Background</button>
-            <button class="filter-btn" onclick="filterAssets('Icons')">Icon's</button>
+            <div class="filter-group" id="filterGroup">
+                <button class="filter-btn active" data-filter="All">All</button>
+                <button class="filter-btn" data-filter="2D Animation">2D Animation</button>
+                <button class="filter-btn" data-filter="Weapons">Weapons</button>
+                <button class="filter-btn" data-filter="2D Background">2D Background</button>
+                <button class="filter-btn" data-filter="Icons">Icons</button>
+            </div>
+            <div class="filter-actions">
+                <select class="sort-select" id="sortSelect">
+                    <option value="default">Sort: Default</option>
+                    <option value="name-asc">A → Z</option>
+                    <option value="name-desc">Z → A</option>
+                </select>
+                <button class="clear-btn" onclick="clearFilters()">✕ Clear Filters</button>
+            </div>
         </div>
 
         <div class="section-title">✨ Latest Assets</div>
 
+        <!-- PRODUCT GRID -->
         <div class="products" id="productContainer"></div>
 
-        <footer>© 2026 Strawberry Asset Hub — All creative resources</footer>
+        <!-- FOOTER -->
+        <footer>
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#faq">FAQ</a>
+                <a href="#changelog">Changelog</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p>© 2026 Strawberry Asset Hub — All creative resources</p>
+        </footer>
 
     </div>
 
+    <!-- BACK TO TOP BUTTON -->
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
     <script>
-        /*
-        =========================================
-        ASSET DATABASE — Easily extendable
-        =========================================
-        */
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        //  ASSET DATABASE
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
         const assets = [
             {
                 name: "Warrior Animation Pack",
                 category: "2D Animation",
-                thumbnail: "../images/coldwheels.png",
+                thumbnail: "store/coldwheels.png",
                 gif: "images/animation1.gif",
                 tag: "🔥 Popular",
                 link: "https://your-superprofile-link"
@@ -575,7 +727,7 @@
             {
                 name: "Fantasy Weapon Set",
                 category: "Weapons",
-                thumbnail: "../images/genshin_x_craft.png",
+                thumbnail: "store/genshin_x_craft.png",
                 gif: "images/weapon1.gif",
                 tag: "✨ Premium",
                 link: "https://your-superprofile-link"
@@ -583,7 +735,7 @@
             {
                 name: "Enchanted Forest Background",
                 category: "2D Background",
-                thumbnail: "../images/top.png",
+                thumbnail: "store/top.png",
                 gif: "images/background1.gif",
                 tag: "🆕 New",
                 link: "https://your-superprofile-link"
@@ -591,7 +743,7 @@
             {
                 name: "Castle Ruins (Icon Set)",
                 category: "Icons",
-                thumbnail: "../images/discord_banner.png",
+                thumbnail: "store/discord_banner.png",
                 gif: "images/background2.gif",
                 tag: "🎁 Free",
                 link: "https://your-superprofile-link"
@@ -599,7 +751,7 @@
             {
                 name: "Dragon Slayer Animations",
                 category: "2D Animation",
-                thumbnail: "../images/youtube_banner.png",
+                thumbnail: "store/youtube_banner.png",
                 gif: "images/dragon.gif",
                 tag: "🏆 Top Rated",
                 link: "https://your-superprofile-link"
@@ -607,34 +759,105 @@
             {
                 name: "Mythic Blades Pack",
                 category: "Weapons",
-                thumbnail: "../images/hollow_knight.png",
+                thumbnail: "store/hollow_knight.png",
                 gif: "images/blades.gif",
                 tag: "⚡ Limited",
                 link: "https://your-superprofile-link"
             }
         ];
 
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        //  RENDER ENGINE
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
         const container = document.getElementById("productContainer");
+        const searchInput = document.getElementById("searchInput");
+        const sortSelect = document.getElementById("sortSelect");
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const backToTop = document.getElementById('backToTop');
+
+        let currentFilter = "All";
+        let currentSearch = "";
+        let currentSort = "default";
+
+        // ── Load saved state ──
+        function loadState() {
+            const savedFilter = localStorage.getItem('strawberry_filter');
+            if (savedFilter) currentFilter = savedFilter;
+            const savedSort = localStorage.getItem('strawberry_sort');
+            if (savedSort) currentSort = savedSort;
+            // apply to UI
+            filterBtns.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.filter === currentFilter);
+            });
+            sortSelect.value = currentSort;
+            // trigger search restore? We don't save search.
+        }
+
+        function saveState() {
+            localStorage.setItem('strawberry_filter', currentFilter);
+            localStorage.setItem('strawberry_sort', currentSort);
+        }
+
+        function getFilteredAssets() {
+            let list = [...assets];
+
+            if (currentFilter !== "All") {
+                list = list.filter(a => a.category === currentFilter);
+            }
+
+            if (currentSearch.trim() !== "") {
+                const q = currentSearch.toLowerCase().trim();
+                list = list.filter(a =>
+                    a.name.toLowerCase().includes(q) ||
+                    a.category.toLowerCase().includes(q) ||
+                    a.tag.toLowerCase().includes(q)
+                );
+            }
+
+            if (currentSort === "name-asc") {
+                list.sort((a, b) => a.name.localeCompare(b.name));
+            } else if (currentSort === "name-desc") {
+                list.sort((a, b) => b.name.localeCompare(a.name));
+            }
+            // default: keep original order
+            return list;
+        }
+
+        function getBadgeClass(tag) {
+            const lower = tag.toLowerCase();
+            if (lower.includes('free')) return 'free';
+            if (lower.includes('premium')) return 'premium';
+            if (lower.includes('popular')) return 'popular';
+            if (lower.includes('new')) return 'new';
+            if (lower.includes('limited')) return 'limited';
+            if (lower.includes('top rated')) return 'top-rated';
+            if (lower.includes('community')) return 'community';
+            return '';
+        }
 
         function renderAssets(list) {
             if (!container) return;
             container.innerHTML = "";
+
             if (list.length === 0) {
                 container.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:40px; color:#aaa;">No assets found 🍓</div>`;
                 return;
             }
+
             list.forEach(asset => {
                 const card = document.createElement("div");
                 card.className = "card";
-                // fallback image if not exists
-                const thumbSrc = asset.thumbnail;
-                const gifSrc = asset.gif;
+                const thumbSrc = asset.thumbnail || "https://placehold.co/400x220/1f2937/ff2e55?text=Strawberry";
+                const gifSrc = asset.gif || "";
+                const badgeClass = getBadgeClass(asset.tag);
+
                 card.innerHTML = `
-                    <img class="preview" src="${thumbSrc}" data-static="${thumbSrc}" data-gif="${gifSrc}" loading="lazy" onerror="this.src='https://placehold.co/400x220/1f2937/ff2e55?text=Strawberry'">
+                    <img class="preview" src="${thumbSrc}" data-static="${thumbSrc}" data-gif="${gifSrc}" loading="lazy" onerror="this.src='https://placehold.co/400x220/1f2937/ff2e55?text=🍓+Asset'">
                     <div class="card-content">
                         <div class="category">📁 ${asset.category}</div>
                         <div class="asset-name">${asset.name}</div>
-                        <div class="tag">${asset.tag}</div>
+                        <span class="tag-badge ${badgeClass}">${asset.tag}</span>
                         <a href="${asset.link}" target="_blank" class="visit-btn">🔍 View Asset</a>
                     </div>
                 `;
@@ -642,7 +865,7 @@
 
                 const img = card.querySelector(".preview");
 
-                // Desktop hover effect (gif preview)
+                // GIF hover effect (desktop)
                 if (img.dataset.gif && img.dataset.gif !== "") {
                     img.addEventListener("mouseenter", () => {
                         img.src = img.dataset.gif;
@@ -651,9 +874,9 @@
                         img.src = img.dataset.static;
                     });
 
-                    // Mobile: long press to show gif (500ms)
+                    // Mobile long-press
                     let pressTimer;
-                    img.addEventListener("touchstart", (e) => {
+                    img.addEventListener("touchstart", () => {
                         pressTimer = setTimeout(() => {
                             img.src = img.dataset.gif;
                         }, 500);
@@ -670,44 +893,93 @@
             });
         }
 
-        // initial render
-        renderAssets(assets);
-
-        function filterAssets(category) {
-            if (category === "All") {
-                renderAssets(assets);
-                return;
+        // ── Show skeleton while images load ──
+        function showSkeletons() {
+            container.innerHTML = '';
+            for (let i = 0; i < 6; i++) {
+                const skeleton = document.createElement('div');
+                skeleton.className = 'skeleton-card';
+                skeleton.innerHTML = `
+                    <div class="skeleton-preview"></div>
+                    <div class="skeleton-line" style="width:40%; margin-top:16px;"></div>
+                    <div class="skeleton-line" style="width:70%;"></div>
+                    <div class="skeleton-line tag"></div>
+                    <div class="skeleton-line" style="width:100%; height:44px; margin-top:auto;"></div>
+                `;
+                container.appendChild(skeleton);
             }
-            const filtered = assets.filter(a => a.category === category);
+        }
+
+        function updateUI() {
+            saveState();
+            const filtered = getFilteredAssets();
             renderAssets(filtered);
         }
+
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        //  FILTER + SEARCH + SORT HANDLERS
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener("click", function() {
+                filterBtns.forEach(b => b.classList.remove("active"));
+                this.classList.add("active");
+                currentFilter = this.dataset.filter;
+                updateUI();
+            });
+        });
 
         function searchAssets() {
-            const keyword = document.getElementById("searchInput").value.toLowerCase().trim();
-            if (keyword === "") {
-                renderAssets(assets);
-                return;
-            }
-            const filtered = assets.filter(asset => asset.name.toLowerCase().includes(keyword) || asset.category.toLowerCase().includes(keyword));
-            renderAssets(filtered);
+            currentSearch = searchInput.value;
+            updateUI();
         }
 
-        // optional: allow Enter key on search input
-        document.getElementById("searchInput")?.addEventListener("keypress", function(e) {
+        searchInput.addEventListener("keypress", function(e) {
             if (e.key === "Enter") {
                 e.preventDefault();
                 searchAssets();
             }
         });
 
-        // fix for any missing images globally (graceful fallback)
-        document.querySelectorAll('.preview').forEach(img => {
-            img.addEventListener('error', function() {
-                if (!this.src.includes('placehold.co')) {
-                    this.src = 'https://placehold.co/400x220/1f2937/ff2e55?text=🍓+Asset';
-                }
-            });
+        sortSelect.addEventListener("change", function() {
+            currentSort = this.value;
+            updateUI();
         });
+
+        function clearFilters() {
+            currentFilter = "All";
+            currentSearch = "";
+            searchInput.value = "";
+            filterBtns.forEach(b => b.classList.remove("active"));
+            document.querySelector('.filter-btn[data-filter="All"]').classList.add("active");
+            updateUI();
+        }
+
+        // ── Back to Top visibility ──
+        const scrollEl = document.getElementById('mainScroll');
+        scrollEl.addEventListener('scroll', function() {
+            if (this.scrollTop > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        //  INIT
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+        loadState();
+        // Show skeletons briefly, then render
+        showSkeletons();
+        setTimeout(() => {
+            updateUI();
+        }, 300); // short delay to simulate loading
+
+        // expose to global
+        window.searchAssets = searchAssets;
+        window.clearFilters = clearFilters;
     </script>
+
 </body>
 </html>
